@@ -126,7 +126,9 @@ public class EditHotelForm extends FormLayout {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 		binder.setBean(hotel);
-
+		if (CategoryService.getInstance().findById(hotel.getCategoryId())==null){
+			category.setSelectedItem(null);
+		}
 		delete.setVisible(hotel.isPersisted());
 		setVisible(true);
 		name.selectAll();
